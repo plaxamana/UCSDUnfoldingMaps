@@ -83,6 +83,10 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		//TODO: Implement this method
 	}
 	
+	// Determines the size of the marker on the map
+	public float setMarkerSize() {
+		return getRadius() + getMagnitude();
+	}
 	
 	/*
 	 * getters for earthquake properties
