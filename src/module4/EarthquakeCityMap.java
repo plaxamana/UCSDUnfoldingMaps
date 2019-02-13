@@ -20,8 +20,8 @@ import processing.core.PApplet;
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
- * Date: July 17, 2015
+ * @author Philip Laxamana
+ * Date: Feb 13, 2019
  * */
 public class EarthquakeCityMap extends PApplet {
 	
@@ -160,17 +160,19 @@ public class EarthquakeCityMap extends PApplet {
 	// "country" property of its PointFeature to the country where it occurred
 	// and returns true.  Notice that the helper method isInCountry will
 	// set this "country" property already.  Otherwise it returns false.
+	
 	private boolean isLand(PointFeature earthquake) {
-		
 		
 		// Loop over all the country markers.  
 		// For each, check if the earthquake PointFeature is in the 
 		// country in m.  Notice that isInCountry takes a PointFeature
 		// and a Marker as input.  
 		// If isInCountry ever returns true, isLand should return true.
+		
 		for (Marker m : countryMarkers) {
-			// TODO: Finish this method using the helper method isInCountry
-			
+			if(isInCountry(earthquake, m)) {
+				return true;
+			}
 		}
 		
 		
@@ -211,7 +213,30 @@ public class EarthquakeCityMap extends PApplet {
 		//      property set.  You can get the country with:
 		//        String country = (String)m.getProperty("country");
 		
+		int waterQuakes = quakeMarkers.size();
 		
+		for(Marker cm : countryMarkers) {
+			int quakes = 0;
+							
+			String name = (String)cm.getProperty("name");
+			for(Marker q : quakeMarkers) {
+				EarthquakeMarker em = (EarthquakeMarker)q;
+				String country = (String)em.getProperty("country");
+				if(em.isOnLand) {
+					if(name.equals(country)) {
+						quakes++;
+					}
+				}
+			}
+			
+			if(quakes > 0) {
+				waterQuakes -= quakes;
+				System.out.println(name + " : " + quakes);
+			}
+			
+			System.out.println("OCEAN QUAKES: " + waterQuakes);
+		}
+
 	}
 	
 	
