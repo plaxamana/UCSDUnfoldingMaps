@@ -2,6 +2,7 @@ package module4;
 
 import de.fhpotsdam.unfolding.data.PointFeature;
 import processing.core.PGraphics;
+import processing.core.PShape;
 
 /** Implements a visual marker for ocean earthquakes on an earthquake map
  * 
@@ -10,7 +11,7 @@ import processing.core.PGraphics;
  *
  */
 public class OceanQuakeMarker extends EarthquakeMarker {
-	
+		
 	public OceanQuakeMarker(PointFeature quake) {
 		super(quake);
 		
@@ -30,7 +31,7 @@ public class OceanQuakeMarker extends EarthquakeMarker {
 		// and how it is set in the EarthquakeMarker constructor
 		
 		// TODO: Implement this method
-		
+		pg.rect(x, y, setMarkerSize(), setMarkerSize());
 	}
 	
 

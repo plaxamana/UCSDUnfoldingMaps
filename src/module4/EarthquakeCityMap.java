@@ -41,7 +41,7 @@ public class EarthquakeCityMap extends PApplet {
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
 	
-	
+	public static final int TRI_SIZE = 5;  
 
 	//feed with magnitude 2.5+ Earthquakes
 	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
@@ -135,24 +135,39 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() {	
 		// Remember you can use Processing's graphics methods here
 		fill(255, 250, 240);
-		rect(25, 50, 150, 250);
+		rect(25, 50, 160, 300);
 		
 		fill(0);
 		textAlign(LEFT, CENTER);
 		textSize(12);
 		text("Earthquake Key", 50, 75);
 		
+		// other symbols
 		fill(color(255, 0, 0));
-		ellipse(50, 125, 15, 15);
-		fill(color(255, 255, 0));
-		ellipse(50, 175, 10, 10);
-		fill(color(0, 0, 255));
-		ellipse(50, 225, 5, 5);
+		triangle(50, 125-TRI_SIZE, 50+TRI_SIZE, 125+TRI_SIZE, 50-TRI_SIZE, 125+TRI_SIZE); // city marker
+		fill(color(255, 255, 255)); // white
+		ellipse(50, 150, 15, 15); // land quake
+		fill(color(255, 255, 255)); // white
+		rect(43, 170, 15, 15); // ocean quake
 		
+		// magnitude colors
+		fill(color(255, 0, 0)); // red
+		ellipse(50, 250, 15, 15);
+		fill(color(255, 255, 0)); // yellow
+		ellipse(50, 275, 10, 10);
+		fill(color(0, 0, 255)); // blue
+		ellipse(50, 300, 5, 5);
+		
+		// text
 		fill(0, 0, 0);
-		text("5.0+ Magnitude", 75, 125);
-		text("4.0+ Magnitude", 75, 175);
-		text("Below 4.0", 75, 225);
+		text("5.0+ Magnitude", 75, 250);
+		text("4.0+ Magnitude", 75, 275);
+		text("Below 4.0", 75, 300);
+		text("City Marker", 75, 125);
+		text("Land Quake", 75, 150);
+		text("Ocean Quake", 75, 175);
+		textSize(12);
+		text("Size ~ Magnitude", 50, 215);
 	}
 
 	
