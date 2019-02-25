@@ -81,6 +81,13 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	// You might find the getters below helpful.
 	private void colorDetermine(PGraphics pg) {
 		//TODO: Implement this method
+		if(getDepth() > 0 && getDepth() <= THRESHOLD_INTERMEDIATE) {
+			pg.fill(255, 255, 0); // yellow, shallow quakes
+		} else if (getDepth() > THRESHOLD_INTERMEDIATE && getDepth() <= THRESHOLD_DEEP) {
+			pg.fill(0, 0, 255); // blue, intermediate quakes
+		} else {
+			pg.fill(255, 0, 0); // red, deep quakes
+		}
 	}
 	
 	// Determines the size of the marker on the map

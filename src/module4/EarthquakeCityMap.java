@@ -160,9 +160,9 @@ public class EarthquakeCityMap extends PApplet {
 		
 		// text
 		fill(0, 0, 0);
-		text("5.0+ Magnitude", 75, 250);
-		text("4.0+ Magnitude", 75, 275);
-		text("Below 4.0", 75, 300);
+		text("5.0+ (Deep)", 75, 250);
+		text("4.0+ (Intermediate)", 75, 275);
+		text("> 4.0 (Shallow)", 75, 300);
 		text("City Marker", 75, 125);
 		text("Land Quake", 75, 150);
 		text("Ocean Quake", 75, 175);
